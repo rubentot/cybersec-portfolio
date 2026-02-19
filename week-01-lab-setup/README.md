@@ -64,7 +64,7 @@ sudo ufw enable
 
 **Why this matters:** A default-deny firewall policy ensures that no unexpected services are exposed. Only SSH (port 22) is allowed inbound, which is the minimum needed for remote administration.
 
-![UFW Status](screenshots/ufw.jpg)
+![UFW Status](screenshots/uwf.jpg)
 
 ### 3. SSH Key Authentication
 
