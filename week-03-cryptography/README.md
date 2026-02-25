@@ -60,7 +60,7 @@ Key components:
 
 
 
-!\[AES Output](screenshots/aeg.png)
+!\[AES Output](screenshots/aes.png)
 
 
 
