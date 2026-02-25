@@ -1,7 +1,5 @@
 # Week 3: Cryptography Hands-On
 
-# Week 3: Cryptography Hands-On
-
 **MSCS Course Mapping:** SE6003 — Cryptography
 
 ## Objective
