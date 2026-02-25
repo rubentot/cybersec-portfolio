@@ -78,6 +78,11 @@ Juice Shop returns `Access-Control-Allow-Origin: *`, allowing any external websi
 - **[Vulnerability Assessment Report](vulnerability_assessment_report.docx)** — Professional report with executive summary, detailed findings, CVSS scores, and prioritized remediation recommendations
 - **[Raw Scan Output](vuln_scan.txt)** — Complete Nmap vulnerability scan results
 
+
+### Report Preview
+
+![Report Cover](screenshots/report.png)
+
 ## How This Connects to Previous Weeks
 
 This week ties together concepts from every previous week:
