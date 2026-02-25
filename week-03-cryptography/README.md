@@ -60,7 +60,7 @@ Key components:
 
 
 
-!\[AES Output](https://github.com/rubentot/cybersec-portfolio/blob/main/week-03-cryptography/screenshots/aes.png?raw=true
+!\[AES Output](https://github.com/rubentot/cybersec-portfolio/blob/main/week-03-cryptography/screenshots/aes.png?raw=true)
 
 
 
