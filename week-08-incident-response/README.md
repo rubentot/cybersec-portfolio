@@ -106,7 +106,7 @@ index=main source="/var/log/audit/audit.log"
 
 These logs captured service activity, credential operations, and session events — confirming that the auditing infrastructure is functioning as intended and feeding into the SIEM.
 
-![Audit Log Events](screenshots/audit.png)
+![Audit Log Events](screenshots/aduit.png)
 
 ### Security Dashboard
 
