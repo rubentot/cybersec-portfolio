@@ -112,8 +112,6 @@ These logs captured service activity, credential operations, and session events 
 
 The security monitoring dashboard showed the attack activity across all four panels — elevated failed login count, the attacker IP identified, successful logins, and sudo command activity from the post-exploitation phase.
 
-![Security Dashboard](screenshots/dashboard.png)
-
 ### Brute Force Alert
 
 The Splunk brute force detection alert configured in Week 7 identified the attacking IP after it exceeded the threshold of 3 failed login attempts:
@@ -122,11 +120,9 @@ The Splunk brute force detection alert configured in Week 7 identified the attac
 index=main "Failed password" | rex "from (?<attacker_ip>\d+\.\d+\.\d+\.\d+)" | stats count by attacker_ip | where count > 3
 ```
 
-![Alert Configuration](screenshots/alert.png)
-
 ## Deliverables
 
-- **[Incident Response Report](incident_response_report.docx)** — Professional report following NIST SP 800-61 with incident summary, detection timeline, IOCs, containment actions, and lessons learned
+- **[Incident Response Report](incident_response_report.pdf)** — Professional report following NIST SP 800-61 with incident summary, detection timeline, IOCs, containment actions, and lessons learned
 
 ## How the Attack Chain Maps to Detection
 
