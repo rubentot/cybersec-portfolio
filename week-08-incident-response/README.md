@@ -62,37 +62,67 @@ Simulated credential harvesting — enumerating user accounts and attempting to 
 
 ### Failed Login Detection
 
-The brute force attack generated 20 entries in `/var/log/auth.log`, each captured by Splunk:
+The brute force attack generated multiple entries in `/var/log/auth.log`, each captured by Splunk in real time:
 
 ```
 index=main "Failed password"
 ```
 
-Each log entry showed the source IP (192.168.0.67), the targeted username, and the timestamp — providing a clear pattern of automated attack activity.
+Each log entry showed the source IP (192.168.0.67), the targeted username (ruben), and the timestamp — revealing a clear automated brute force pattern with attempts occurring every few seconds.
 
 ![Failed Password Events](screenshots/failedPasswords.png)
 
+### Successful Login Detection
+
+After the brute force phase, Splunk captured successful logins from the same attacker IP:
+
+```
+index=main "Accepted"
+```
+
+The logs show both publickey and password-based accepted logins from 192.168.0.67. A successful login from an IP that was previously generating failed attempts is a strong indicator of account compromise.
+
+![Accepted Logins](screenshots/acceptedPasswords.png)
+
+### Credential Harvesting Detection
+
+Splunk captured the attacker's attempt to read the shadow file using sudo, revealing post-exploitation credential harvesting activity:
+
+```
+index=main "shadow"
+```
+
+The log shows the exact command executed (`COMMAND=/usr/bin/cat /etc/shadow`), the user who ran it (admin), and that it was executed as root — providing a complete audit trail of the attacker's actions.
+
+![Shadow File Access](screenshots/shadow.png)
+
+### Audit Log Detection
+
+The auditd rules configured in Week 1 generated detailed events in `/var/log/audit/audit.log`, providing an additional layer of visibility into system-level activity during the attack:
+
+```
+index=main source="/var/log/audit/audit.log"
+```
+
+These logs captured service activity, credential operations, and session events — confirming that the auditing infrastructure is functioning as intended and feeding into the SIEM.
+
+![Audit Log Events](screenshots/audit.png)
+
+### Security Dashboard
+
+The security monitoring dashboard showed the attack activity across all four panels — elevated failed login count, the attacker IP identified, successful logins, and sudo command activity from the post-exploitation phase.
+
+![Security Dashboard](screenshots/dashboard.png)
+
 ### Brute Force Alert
 
-The Splunk brute force detection rule created in Week 7 identified the attack:
+The Splunk brute force detection alert configured in Week 7 identified the attacking IP after it exceeded the threshold of 3 failed login attempts:
 
 ```
 index=main "Failed password" | rex "from (?<attacker_ip>\d+\.\d+\.\d+\.\d+)" | stats count by attacker_ip | where count > 3
 ```
 
-The attacker IP exceeded the threshold of 3 failed attempts, triggering the alert.
-
 ![Alert Configuration](screenshots/alert.png)
-
-### Security Dashboard
-
-The security monitoring dashboard showed the attack activity across all four panels — elevated failed login count, the attacker IP identified, and sudo command activity from the post-exploitation phase.
-
-![Security Dashboard](screenshots/dashboard.png)
-
-### Audit Log Detection
-
-The auditd rules configured in Week 1 detected access to sensitive files during the post-exploitation phase, providing evidence of credential harvesting activity.
 
 ## Deliverables
 
@@ -103,15 +133,16 @@ The auditd rules configured in Week 1 detected access to sensitive files during 
 | Attack Phase | Attacker Action | Log Source | Splunk Detection |
 |-------------|----------------|-----------|-----------------|
 | Reconnaissance | Nmap scan | syslog / firewall | Port scan pattern in network logs |
-| Brute Force | 20 failed SSH logins | auth.log | Brute force alert triggered (>3 failures per IP) |
+| Brute Force | Failed SSH logins | auth.log | Brute force alert triggered (>3 failures per IP) |
 | Access | Successful SSH login | auth.log | "Accepted" event from previously attacking IP |
 | Post-Exploitation | cat /etc/passwd | audit.log | Auditd rule on /etc/passwd triggered |
-| Post-Exploitation | sudo cat /etc/shadow | audit.log | Auditd rule on /etc/shadow triggered |
+| Post-Exploitation | sudo cat /etc/shadow | auth.log + audit.log | Sudo command logged with full command path |
 
 ## Key Takeaways
 
 - Incident response is a structured process, not a panic reaction — the NIST framework provides a repeatable methodology for handling any security event
 - Detection is only valuable if it leads to action — the SIEM detected the brute force but without automated blocking (fail2ban), the attack completed before manual intervention was possible
+- Multiple log sources provide layered visibility — auth.log captured the authentication events, while audit.log recorded file access and system-level activity
 - Post-incident analysis is as important as containment — identifying gaps (no rate limiting, password auth enabled, hourly alert schedule) leads to concrete improvements
 - Defense in depth reduces impact — even though the attacker gained access, the firewall limited exposed services, and auditd provided visibility into post-exploitation activity
 - Every incident should result in a stronger security posture — the lessons learned from this simulation directly improve the lab's defenses
