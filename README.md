@@ -14,7 +14,7 @@ Pre-Masters preparation portfolio mapped to the NTU MSCS curriculum. This reposi
 | 6 | [Penetration Testing](week-06-pentesting-methodology/) | HackTheBox CTF writeups, structured pentesting methodology |
 | 7 | [SIEM & Log Analysis](week-07-SIEM-/) | Splunk, detection rules, dashboards, log ingestion |
 | 8 | [Incident Response Simulation](week-08-incident-response/) | NIST SP 800-61, breach simulation, detection and containment |
-| 9 | [Malware Analysis](week-09-malware-analysis/) | Static and dynamic analysis, IOC extraction, REMnux |
+| 9 | [Malware Analysis](week-09-Malware-Analysis/) | Static and dynamic analysis, IOC extraction, REMnux |
 | 10 | [Digital Forensics](week-10-forensics/) | Autopsy, disk image analysis, artifact recovery, forensic reporting |
 | 11 | [Cloud & Zero Trust Security](week-11-cloud-security/) | AWS security audit, zero trust architecture, misconfiguration remediation |
 | 12 | [Portfolio Assembly & Cert Prep](week-12-portfolio/) | Documentation, Security+ preparation, MSCS curriculum mapping |
