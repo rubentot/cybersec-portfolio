@@ -117,9 +117,7 @@ Revealed complete plaintext C2 conversation and stolen data.
 
 ## Deliverables
 
-- `week11-network-traffic-analysis-report.docx` — Full analysis report
-- `week11-README.md` — This file
-- `screenshots/` — Wireshark screenshots
+- **[report](week11-report.pdf)** — Professional report following blueteam standards.
 
 ---
 
