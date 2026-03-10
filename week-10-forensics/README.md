@@ -141,9 +141,7 @@ scp -r ruben@192.168.0.89:~/forensics-evidence C:\forensics-evidence
 
 ## Deliverables
 
-- `week10-forensics-report.docx` — Full forensic investigation report (Case WK10-FORENSICS-001)
-- `README.md` — This file
-- `screenshots/` — Autopsy evidence screenshots
+- **[forensics-report](week1-forensics-report-pdf)** — Professional report following blueteam standards.
 
 ---
 
