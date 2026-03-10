@@ -141,7 +141,7 @@ scp -r ruben@192.168.0.89:~/forensics-evidence C:\forensics-evidence
 
 ## Deliverables
 
-- **[forensics-report](week10-forensics-report-pdf)** — Professional report following blueteam standards.
+- **[forensics-report](week10-forensics-report.pdf)** — Professional report following blueteam standards.
 
 ---
 
