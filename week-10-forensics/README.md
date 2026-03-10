@@ -96,13 +96,13 @@ scp -r ruben@192.168.0.89:~/forensics-evidence C:\forensics-evidence
 
 | Screenshot | Description |
 |-----------|-------------|
-| `screenshots/01-malware-sh.png` | malware.sh contents in Autopsy |
-| `screenshots/02-exfil-log.png` | exfil.log contents — C2 session timeline |
-| `screenshots/03-creds-txt.png` | creds.txt — harvested credentials |
-| `screenshots/04-deleted-note.png` | deleted_note.txt — financial communication |
-| `screenshots/05-keyword-c2-ip.png` | Keyword search: 192.168.1.100 highlighted in exfil.log |
-| `screenshots/06-keyword-curl.png` | Keyword search: curl highlighted in malware.sh |
-| `screenshots/07-keyword-passwd.png` | Keyword search: passwd highlighted across files |
+| `screenshots/1.png` | malware.sh contents in Autopsy |
+| `screenshots/2.png` | exfil.log contents — C2 session timeline |
+| `screenshots/3.png` | creds.txt — harvested credentials |
+| `screenshots/4.png` | deleted_note.txt — financial communication |
+| `screenshots/5-png` | Keyword search: 192.168.1.100 highlighted in exfil.log |
+| `screenshots/6.png` | Keyword search: curl highlighted in malware.sh |
+| `screenshots/7.png` | Keyword search: passwd highlighted across files |
 
 ---
 
